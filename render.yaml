@@ -1,10 +1,10 @@
 services:
   - type: web
     name: hamka-backend
-    env: node
+    env: nodep
     plan: free
     buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
       - key: DATABASE_URL
-        value: replace-this-later-in-render
+        value: postgresql://neondb_owner:npg_vT3rdbfqhxo1@ep-dark-mud-a2rhrle6-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require
