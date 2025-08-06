@@ -8,8 +8,7 @@ export const shelves = pgTable("shelves", {
 export const yarns = pgTable("yarns", {
   id: serial("id").primaryKey(),
   brand: text("brand").notNull(),
-  code: text("code").notNull(),
-  color: text("color").notNull(),
+  code: text("code").notNull(),,
   thickness: text("thickness").notNull(),
   quantity: integer("quantity").notNull(),
   shelfId: integer("shelf_id")
