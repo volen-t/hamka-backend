@@ -6,15 +6,20 @@ export const shelvesRouter = Router();
 
 // Tüm rafları getir
 shelvesRouter.get("/", async (req, res) => {
-  const result = await db.select().from(shelves);
-  res.json(result);
+  try {
+    const result = await db.select().from(shelves);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Raflar alınamadı." });
+  }
 });
 
 // Yeni raf ekle
 shelvesRouter.post("/", async (req, res) => {
-  const data = req.body;
+  const { name } = req.body;
+
   try {
-    const inserted = await db.insert(shelves).values(data).returning();
+    const inserted = await db.insert(shelves).values({ name }).returning();
     res.status(201).json(inserted);
   } catch (err) {
     res.status(500).json({ error: "Raf eklenemedi." });
